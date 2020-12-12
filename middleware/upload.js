@@ -25,7 +25,7 @@ var storage = multer.diskStorage({
                callback(null, true)
             }else{
                 console.log('only png or pdf or jpg file supported ')
-                callback(null, false)
+                callback(null, true)
             }
      },
      limits:{

@@ -8,11 +8,14 @@ var ProductSchema = new Schema({
     department:String,
     reference:String,
     frequency:String,
-    riskType:String,
-   expiration:Number,
+    biggestRisk:String,
+    expiration:Number,
     gracePeriod: Number,
-    preparation:String,
+    startDate:String,
     actionTaken: String,
-    avatar:String
+    status: Number,
+    supervisor: String,
+    textarea:String,
+    file:String // avatar
 },{timestamps:true});
 module.exports = mongoose.model('Product', ProductSchema);

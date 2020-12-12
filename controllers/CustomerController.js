@@ -39,19 +39,22 @@ const show = (req,res,next)=>{
 const store =(req,res,next)=>{
     let customer = new Customer({
         role: req.body.role,
-    requirment: req.body.requirment,
-    requirmenttype: req.body.requirmenttype,
-    department:req.body.department,
-    reference:req.body.reference,
-    frequency:req.body.frequency,
-    riskType:req.body.riskType,
-   expiration:req.body.expiration,
-    gracePeriod: req.body. gracePeriod,
-    preparation:req.body.preparation,
-    actionTaken: req.body.actionTaken,
+        requirment: req.body.requirment,
+        requirmenttype: req.body.requirmenttype,
+        department:req.body.department,
+        reference:req.body.reference,
+        frequency:req.body.frequency,
+        biggestRisk:req.body.biggestRisk,
+        expiration:req.body.expiration,
+        gracePeriod: req.body. gracePeriod,
+        startDate:req.body.startDate,
+        actionTaken: req.body.actionTaken,
+        status: req.body.status,
+        textarea:req.body.textarea,
+        supervisor: req.body.supervisor,
     })
     if(req.file){
-        customer.avatar = req.file.path
+        customer.file = req.file.path //avatar
     }
 
     if(req.files){
@@ -60,7 +63,7 @@ const store =(req,res,next)=>{
             path = path + files.path +','
         })
         path = path.substring(0,path.lastIndexOf(","))
-        customer.avatar = path
+        customer.file = path
     }
     customer.save()
     .then(response=>{
@@ -82,10 +85,20 @@ const update = (req,res,next)=>{
     let customerID = req.body.customerID
 
     let updateData ={
-        name: req.body.name,
-        amount: req.body.amount,
-        description: req.body.description,
-
+        role: req.body.role,
+        requirment: req.body.requirment,
+        requirmenttype: req.body.requirmenttype,
+        department:req.body.department,
+        reference:req.body.reference,
+        frequency:req.body.frequency,
+        biggestRisk:req.body.biggestRisk,
+        expiration:req.body.expiration,
+        gracePeriod: req.body. gracePeriod,
+        startDate:req.body.startDate,
+        actionTaken: req.body.actionTaken,
+        status: req.body.status,
+        textarea:req.body.textarea,
+        supervisor: req.body.supervisor,
     }
 
     Customer.findByIdAndUpdate(customerID,{$set:updateData})
